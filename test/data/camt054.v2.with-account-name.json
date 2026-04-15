@@ -42,6 +42,8 @@
                     "getIdentification": "CH2801234000123456789",
                     "getName": "Account Owner Name"
                 },
+                "getAccountServicerBic": null,
+                "getAccountServicerName": null,
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,
                 "getCreatedOn": {

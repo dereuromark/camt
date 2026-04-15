@@ -24,6 +24,8 @@
                 "getIdentification": "GB33BUKB20201555555555",
                 "getName": null
             },
+            "getAccountServicerBic": null,
+            "getAccountServicerName": null,
             "getAdditionalInformation": null,
             "getBalances": [
                 {

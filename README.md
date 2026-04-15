@@ -74,6 +74,7 @@ $message = $reader->readFile('test/data/camt053.v2.minimal.xml');
 $statements = $message->getRecords();
 foreach ($statements as $statement) {
     $entries = $statement->getEntries();
+    $accountServicerBic = $statement->getAccountServicerBic();
 }
 ```
 

@@ -125,6 +125,18 @@ class EndToEndTest extends Framework\TestCase
                 self::assertEquals('Additional Information', $report->getAdditionalInformation());
             }
         }
+
+        self::assertNull($messages[0]->getRecords()[0]->getAccountServicerBic());
+        self::assertNull($messages[0]->getRecords()[0]->getAccountServicerName());
+
+        self::assertNull($messages[1]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('AAAA BANKEN', $messages[1]->getRecords()[0]->getAccountServicerName());
+
+        self::assertEquals('UBSWCHZH80A', $messages[2]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('UBS SWITZERLAND AG', $messages[2]->getRecords()[0]->getAccountServicerName());
+
+        self::assertNull($messages[3]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('UBSWCHZH80A', $messages[3]->getRecords()[0]->getAccountServicerName());
     }
 
     public function testEntries(): void

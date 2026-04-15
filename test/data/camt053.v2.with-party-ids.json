@@ -41,6 +41,8 @@
                     "getIdentification": "NL26VAYB8060476890",
                     "getName": null
                 },
+                "getAccountServicerBic": null,
+                "getAccountServicerName": null,
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
                     {

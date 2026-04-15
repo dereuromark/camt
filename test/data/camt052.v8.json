@@ -42,6 +42,8 @@
                     "getIssuer": null,
                     "getSchemeName": null
                 },
+                "getAccountServicerBic": null,
+                "getAccountServicerName": "UBSWCHZH80A",
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [],
                 "getCopyDuplicateIndicator": "CODU",

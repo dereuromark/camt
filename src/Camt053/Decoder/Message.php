@@ -35,6 +35,7 @@ class Message extends BaseMessageDecoder
                 $statement->setAdditionalInformation((string) $xmlStatement->AddtlStmtInf);
             }
 
+            $this->addAccountServicerInformation($statement, $xmlStatement);
             $this->addCommonRecordInformation($statement, $xmlStatement);
             $this->recordDecoder->addBalances($statement, $xmlStatement);
             $this->recordDecoder->addEntries($statement, $xmlStatement);

@@ -37,6 +37,7 @@ abstract class Message extends BaseMessageDecoder
                 $report->setAdditionalInformation((string) $xmlReport->AddtlRptInf);
             }
 
+            $this->addAccountServicerInformation($report, $xmlReport);
             $this->addCommonRecordInformation($report, $xmlReport);
             $this->recordDecoder->addBalances($report, $xmlReport);
             $this->recordDecoder->addEntries($report, $xmlReport);

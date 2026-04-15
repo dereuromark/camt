@@ -68,6 +68,41 @@ abstract class Message
         }
     }
 
+    protected function addAccountServicerInformation(DTO\Record $record, SimpleXMLElement $xmlRecord): void
+    {
+        $record->setAccountServicerBic($this->getAccountServicerBic($xmlRecord));
+        $record->setAccountServicerName($this->getAccountServicerName($xmlRecord));
+    }
+
+    protected function getAccountServicerBic(SimpleXMLElement $xmlRecord): ?string
+    {
+        $xmlFinancialInstitution = $xmlRecord->Acct?->Svcr?->FinInstnId;
+        if ($xmlFinancialInstitution === null) {
+            return null;
+        }
+
+        $bic = $xmlFinancialInstitution->BIC;
+        if (!isset($bic) || mb_trim((string) $bic) === '') {
+            $bic = $xmlFinancialInstitution->BICFI;
+        }
+
+        $bic = mb_trim((string) $bic);
+
+        return $bic !== '' ? $bic : null;
+    }
+
+    protected function getAccountServicerName(SimpleXMLElement $xmlRecord): ?string
+    {
+        $name = $xmlRecord->Acct?->Svcr?->FinInstnId?->Nm;
+        if ($name === null) {
+            return null;
+        }
+
+        $name = mb_trim((string) $name);
+
+        return $name !== '' ? $name : null;
+    }
+
     abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document): void;
 
     abstract public function getRootElement(SimpleXMLElement $document): SimpleXMLElement;

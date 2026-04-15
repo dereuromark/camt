@@ -38,6 +38,7 @@ class Message extends BaseMessageDecoder
                 $notification->setAdditionalInformation((string) $xmlNotification->AddtlNtfctnInf);
             }
 
+            $this->addAccountServicerInformation($notification, $xmlNotification);
             $this->addCommonRecordInformation($notification, $xmlNotification);
             $this->recordDecoder->addEntries($notification, $xmlNotification);
 
