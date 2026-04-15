@@ -8,6 +8,8 @@
 
 Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are supported.
 
+Versions `.10` and `.11` are handled in compatibility mode by reusing the latest schema-backed `.08` decoder for each message family. Strict XSD validation remains available for the schema-backed versions listed below.
+
 ### Supported Versions
 
 #### Camt 052
@@ -21,8 +23,8 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.052.001.05 |                    |
 | camt.052.001.06 | :heavy_check_mark: |
 | camt.052.001.08 | :heavy_check_mark: |
-| camt.052.001.10 |                    |
-| camt.052.001.11 |                    |
+| camt.052.001.10 | :heavy_check_mark: |
+| camt.052.001.11 | :heavy_check_mark: |
 
 #### Camt 053
 
@@ -35,8 +37,8 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.053.001.05 |                    |
 | camt.053.001.06 |                    |
 | camt.053.001.08 | :heavy_check_mark: |
-| camt.053.001.10 |                    |
-| camt.053.001.11 |                    |
+| camt.053.001.10 | :heavy_check_mark: |
+| camt.053.001.11 | :heavy_check_mark: |
 
 #### Camt 054
 
@@ -49,8 +51,8 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.054.001.05 |                    |
 | camt.054.001.06 |                    |
 | camt.054.001.08 | :heavy_check_mark: |
-| camt.054.001.10 |                    |
-| camt.054.001.11 |                    |
+| camt.054.001.10 | :heavy_check_mark: |
+| camt.054.001.11 | :heavy_check_mark: |
 
 ### Installation
 
