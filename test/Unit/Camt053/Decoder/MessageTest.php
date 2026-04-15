@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Genkgo\TestCamt\Unit\Camt053\Decoder;
 
+use DateTimeImmutable;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Camt053\Decoder\Message;
 use Genkgo\Camt\Decoder as DecoderObject;
@@ -71,8 +72,42 @@ class MessageTest extends Framework\TestCase
         $this->decoder->addRecords($message, $this->getXmlMessage());
     }
 
-    private function getXmlMessage(): SimpleXMLElement
+    public function testItFallsBackToGroupHeaderCreatedOnWhenStatementCreatedOnIsMissing(): void
     {
+        $message = $this->createMock(DTO\Message::class);
+
+        $this->mockedRecordDecoder
+            ->expects(self::once())
+            ->method('addBalances');
+
+        $this->mockedRecordDecoder
+            ->expects(self::once())
+            ->method('addEntries');
+
+        $message
+            ->expects(self::once())
+            ->method('setRecords')
+            ->with(self::callback(static function (array $records): bool {
+                self::assertCount(1, $records);
+                self::assertInstanceOf(Camt053\DTO\Statement::class, $records[0]);
+                self::assertEquals(
+                    new DateTimeImmutable('2015-03-10T18:43:50+00:00'),
+                    $records[0]->getCreatedOn()
+                );
+
+                return true;
+            }));
+
+        $this->decoder->addRecords($message, $this->getXmlMessage(withStatementCreatedOn: false));
+    }
+
+    private function getXmlMessage(bool $withStatementCreatedOn = true): SimpleXMLElement
+    {
+        $statementCreatedOn = '';
+        if ($withStatementCreatedOn) {
+            $statementCreatedOn = '<CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>';
+        }
+
         $xmlContent = <<<XML
 <content>
     <BkToCstmrStmt>
@@ -82,7 +117,7 @@ class MessageTest extends Framework\TestCase
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
-            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            {$statementCreatedOn}
             <Acct>
                 <Id>
                     <IBAN>NL26VAYB8060476890</IBAN>

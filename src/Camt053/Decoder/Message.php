@@ -15,12 +15,18 @@ class Message extends BaseMessageDecoder
     public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $statements = [];
+        $groupHeaderCreatedOn = (string) $this->getRootElement($document)->GrpHdr->CreDtTm;
 
         $xmlStatements = $this->getRootElement($document)->Stmt;
         foreach ($xmlStatements as $xmlStatement) {
+            $statementCreatedOn = (string) $xmlStatement->CreDtTm;
+            if ($statementCreatedOn === '') {
+                $statementCreatedOn = $groupHeaderCreatedOn;
+            }
+
             $statement = new Camt053DTO\Statement(
                 (string) $xmlStatement->Id,
-                $this->dateDecoder->decode((string) $xmlStatement->CreDtTm),
+                $this->dateDecoder->decode($statementCreatedOn),
                 $this->getAccount($xmlStatement)
             );
 
