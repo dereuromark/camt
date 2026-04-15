@@ -78,6 +78,8 @@ foreach ($statements as $statement) {
 }
 ```
 
+Structured remittance blocks expose both the legacy first-value getter and all `AddtlRmtInf` values via `getAdditionalRemittanceInformations()`.
+
 
 
 ### XSD validation

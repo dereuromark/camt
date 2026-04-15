@@ -3,7 +3,7 @@
     "getEntries": [
         {
             "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
-            "getAccountServicerReference": null,
+            "getAccountServicerReference": "AAAASESS-FP-CN_98765/01",
             "getAdditionalInfo": "",
             "getAmount": {
                 "__CLASS__": "Money\\Money",
@@ -15,17 +15,21 @@
             },
             "getBankTransactionCode": {
                 "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
-                "getDomain": null,
-                "getProprietary": {
-                    "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
-                    "getCode": "544",
-                    "getIssuer": ""
-                }
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "RCDT",
+                        "getSubFamilyCode": "BOOK"
+                    }
+                },
+                "getProprietary": null
             },
             "getBatchPaymentId": null,
             "getBookingDate": {
                 "__CLASS__": "DateTimeImmutable",
-                "0": "2014-12-31T00:00:00+00:00"
+                "0": "2014-12-31T12:15:00+00:00"
             },
             "getCharges": null,
             "getCreditDebitIndicator": "CRDT",
@@ -33,16 +37,13 @@
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt053\\DTO\\Statement",
                 "getAccount": {
-                    "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
-                    "getIban": {
-                        "__CLASS__": "Genkgo\\Camt\\Iban",
-                        "getIban": "NL26VAYB8060476890"
-                    },
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\OtherAccount",
                     "getIdentification": "NL26VAYB8060476890",
-                    "getName": null
+                    "getIssuer": null,
+                    "getSchemeName": null
                 },
                 "getAccountServicerBic": null,
-                "getAccountServicerName": null,
+                "getAccountServicerName": "AAAA BANKEN",
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
                     {
@@ -73,7 +74,7 @@
                         },
                         "getDate": {
                             "__CLASS__": "DateTimeImmutable",
-                            "0": "2014-12-31T00:00:00+00:00"
+                            "0": "2014-12-30T00:00:00+00:00"
                         },
                         "getType": "closing"
                     },
@@ -125,7 +126,10 @@
                 },
                 "getId": "253EURNL26VAYB8060476890",
                 "getLegalSequenceNumber": "12312",
-                "getPagination": null,
+                "getPagination": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+                    "getPageNumber": "2"
+                },
                 "getToDate": {
                     "__CLASS__": "DateTimeImmutable",
                     "0": "2007-10-18T11:30:00+00:00"
@@ -137,16 +141,19 @@
             "getTransactionDetail": {
                 "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
                 "getAdditionalTransactionInformation": null,
-                "getAmount": null,
+                "getAmount": {
+                    "__CLASS__": "Money\\Money",
+                    "getAmount": "0",
+                    "getCurrency": {
+                        "__CLASS__": "Money\\Currency",
+                        "getCode": "SEK"
+                    }
+                },
                 "getAmountDetails": null,
                 "getBankTransactionCode": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
                     "getDomain": null,
-                    "getProprietary": {
-                        "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
-                        "getCode": "544",
-                        "getIssuer": ""
-                    }
+                    "getProprietary": null
                 },
                 "getCharges": null,
                 "getCreditDebitIndicator": "CRDT",
@@ -157,7 +164,7 @@
                     "getAccountServicerTransactionId": null,
                     "getChequeNumber": null,
                     "getClearingSystemReference": null,
-                    "getEndToEndId": null,
+                    "getEndToEndId": "MUELL/FINP/RA12345",
                     "getInstructionId": null,
                     "getMandateId": null,
                     "getMarketInfrastructureTransactionId": null,
@@ -180,17 +187,22 @@
                 "getRelatedParties": [
                     {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
-                        "getAccount": null,
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "NL56AGDH9619008421"
+                            },
+                            "getIdentification": "NL56AGDH9619008421",
+                            "getName": null
+                        },
                         "getRelatedPartyType": {
-                            "__CLASS__": "Genkgo\\Camt\\DTO\\UltimateCreditor",
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
                             "getAddress": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
-                                "getAddressLines": [
-                                    "CREDITOR NAME",
-                                    "CREDITOR ADD"
-                                ],
+                                "getAddressLines": [],
                                 "getBuildingNumber": null,
-                                "getCountry": null,
+                                "getCountry": "NL",
                                 "getCountrySubDivision": null,
                                 "getDepartment": null,
                                 "getPostCode": null,
@@ -198,23 +210,47 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getIdentification": null,
-                            "getName": "CREDITOR NAME NM"
+                            "getIdentification": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                                "getBankPartyId": null,
+                                "getBei": null,
+                                "getBic": null,
+                                "getChipsUniversalId": null,
+                                "getDuns": null,
+                                "getEangln": null,
+                                "getIbei": null,
+                                "getIdentification": "455454654",
+                                "getIssuer": null,
+                                "getOtherId": "455454654",
+                                "getOtherIssuer": "KBO-BCE",
+                                "getOtherSchemeName": null,
+                                "getOtherType": null,
+                                "getTaxId": null
+                            },
+                            "getName": "Company Name"
                         }
                     },
                     {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
-                        "getAccount": null,
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "NL56AGDH9619008421"
+                            },
+                            "getIdentification": "NL56AGDH9619008421",
+                            "getName": null
+                        },
                         "getRelatedPartyType": {
-                            "__CLASS__": "Genkgo\\Camt\\DTO\\UltimateDebtor",
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
                                 "getAddressLines": [
-                                    "DEBTOR NAME",
-                                    "DEBTOR ADD"
+                                    "ADDR ADDR 10",
+                                    "2000 ANTWERPEN"
                                 ],
                                 "getBuildingNumber": null,
-                                "getCountry": null,
+                                "getCountry": "NL",
                                 "getCountrySubDivision": null,
                                 "getDepartment": null,
                                 "getPostCode": null,
@@ -223,7 +259,7 @@
                                 "getTownName": null
                             },
                             "getIdentification": null,
-                            "getName": "DEBTOR NAME NM"
+                            "getName": "NAME NAME"
                         }
                     }
                 ],
@@ -240,7 +276,6 @@
                     "getStructuredBlock": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                         "getAdditionalRemittanceInformation": null,
-                        "getAdditionalRemittanceInformations": [],
                         "getCreditorReferenceInformation": "__RECURSIVITY__"
                     },
                     "getStructuredBlocks": [
@@ -287,7 +322,7 @@
             "getIdentification": {
                 "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
                 "getBankPartyId": null,
-                "getBei": "DABAIE2D",
+                "getBei": null,
                 "getBic": "DABAIE2D",
                 "getChipsUniversalId": null,
                 "getDuns": null,
@@ -303,7 +338,10 @@
             },
             "getName": "COMPANY BVBA"
         },
-        "getPagination": null
+        "getPagination": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+            "getPageNumber": "1"
+        }
     },
     "getRecords": [
         "__RECURSIVITY__"

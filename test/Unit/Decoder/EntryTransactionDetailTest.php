@@ -102,6 +102,32 @@ class EntryTransactionDetailTest extends Framework\TestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail, $xmlDetail);
     }
 
+    public function testItAddsAllAdditionalRemittanceInformationValuesFromStructuredBlocks(): void
+    {
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::once())
+            ->method('setRemittanceInformation')
+            ->with(self::callback(static function (DTO\RemittanceInformation $remittanceInformation): bool {
+                $structuredBlock = $remittanceInformation->getStructuredBlock();
+                self::assertInstanceOf(DTO\StructuredRemittanceInformation::class, $structuredBlock);
+                self::assertSame('Additional block 1', $structuredBlock->getAdditionalRemittanceInformation());
+                self::assertSame(
+                    ['Additional block 1', 'Additional block 2'],
+                    $structuredBlock->getAdditionalRemittanceInformations()
+                );
+
+                return true;
+            }));
+
+        $xmlDetail = new SimpleXMLElement(
+            '<content><RmtInf><Strd><AddtlRmtInf>Additional block 1</AddtlRmtInf><AddtlRmtInf>Additional block 2</AddtlRmtInf></Strd></RmtInf></content>'
+        );
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail, $xmlDetail);
+    }
+
     public function testItDoesNotAddReturnInformationIfThereIsNoneInXml(): void
     {
         $detail = $this->createMock(DTO\EntryTransactionDetail::class);
