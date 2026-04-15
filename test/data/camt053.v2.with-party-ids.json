@@ -282,6 +282,7 @@
                     "getStructuredBlock": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                         "getAdditionalRemittanceInformation": null,
+                        "getAdditionalRemittanceInformations": [],
                         "getCreditorReferenceInformation": "__RECURSIVITY__"
                     },
                     "getStructuredBlocks": [

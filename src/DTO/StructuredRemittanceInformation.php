@@ -10,6 +10,11 @@ class StructuredRemittanceInformation
 
     private ?string $additionalRemittanceInformation = null;
 
+    /**
+     * @var string[]
+     */
+    private array $additionalRemittanceInformations = [];
+
     public function getAdditionalRemittanceInformation(): ?string
     {
         return $this->additionalRemittanceInformation;
@@ -18,6 +23,26 @@ class StructuredRemittanceInformation
     public function setAdditionalRemittanceInformation(?string $additionalRemittanceInformation): void
     {
         $this->additionalRemittanceInformation = $additionalRemittanceInformation;
+        $this->additionalRemittanceInformations = $additionalRemittanceInformation !== null
+            ? [$additionalRemittanceInformation]
+            : [];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getAdditionalRemittanceInformations(): array
+    {
+        return $this->additionalRemittanceInformations;
+    }
+
+    /**
+     * @param string[] $additionalRemittanceInformations
+     */
+    public function setAdditionalRemittanceInformations(array $additionalRemittanceInformations): void
+    {
+        $this->additionalRemittanceInformations = $additionalRemittanceInformations;
+        $this->additionalRemittanceInformation = $additionalRemittanceInformations[0] ?? null;
     }
 
     public function getCreditorReferenceInformation(): ?CreditorReferenceInformation
