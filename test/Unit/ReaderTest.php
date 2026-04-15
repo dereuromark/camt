@@ -11,6 +11,7 @@ use Genkgo\Camt\DTO;
 use Genkgo\Camt\Exception\ReaderException;
 use Genkgo\Camt\Reader;
 use PHPUnit\Framework;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ReaderTest extends Framework\TestCase
 {
@@ -57,5 +58,64 @@ class ReaderTest extends Framework\TestCase
         $reader = new Reader($config);
         $message = $reader->readFile('test/data/camt053.v2.minimal.xml');
         self::assertInstanceOf(DTO\Message::class, $message);
+    }
+
+    #[DataProvider('providerCompatibleNamespaces')]
+    public function testReadCompatibleNewerFormatNamespace(
+        string $file,
+        string $fromNamespace,
+        string $toNamespace,
+        string $expectedMsgId
+    ): void {
+        $xml = file_get_contents($file);
+        self::assertNotFalse($xml);
+
+        $xml = str_replace($fromNamespace, $toNamespace, $xml);
+
+        $reader = new Reader(Config::getDefault());
+        $message = $reader->readString($xml);
+
+        self::assertInstanceOf(DTO\Message::class, $message);
+        self::assertSame($expectedMsgId, $reader->getMessageFormat()?->getMsgId());
+    }
+
+    public static function providerCompatibleNamespaces(): iterable
+    {
+        yield 'camt052-v10' => [
+            'test/data/camt052.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.052.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.052.001.10',
+            'camt.052.001.10',
+        ];
+        yield 'camt052-v11' => [
+            'test/data/camt052.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.052.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.052.001.11',
+            'camt.052.001.11',
+        ];
+        yield 'camt053-v10' => [
+            'test/data/camt053.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.053.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.053.001.10',
+            'camt.053.001.10',
+        ];
+        yield 'camt053-v11' => [
+            'test/data/camt053.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.053.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.053.001.11',
+            'camt.053.001.11',
+        ];
+        yield 'camt054-v10' => [
+            'test/data/camt054.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.10',
+            'camt.054.001.10',
+        ];
+        yield 'camt054-v11' => [
+            'test/data/camt054.v8.xml',
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.08',
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.11',
+            'camt.054.001.11',
+        ];
     }
 }
