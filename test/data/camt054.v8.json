@@ -212,6 +212,9 @@
                     "getStructuredBlock": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                         "getAdditionalRemittanceInformation": "Additional Remittance Information V1",
+                        "getAdditionalRemittanceInformations": [
+                            "Additional Remittance Information V1"
+                        ],
                         "getCreditorReferenceInformation": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
                             "getCode": null,
@@ -372,6 +375,9 @@
                         "getStructuredBlock": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                             "getAdditionalRemittanceInformation": "Additional Remittance Information V2",
+                            "getAdditionalRemittanceInformations": [
+                                "Additional Remittance Information V2"
+                            ],
                             "getCreditorReferenceInformation": "__RECURSIVITY__"
                         },
                         "getStructuredBlocks": [
@@ -515,6 +521,9 @@
                         "getStructuredBlock": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                             "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 1",
+                            "getAdditionalRemittanceInformations": [
+                                "Additional Remittance Information V3 block 1"
+                            ],
                             "getCreditorReferenceInformation": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
                                 "getCode": "SCOR",
@@ -527,6 +536,9 @@
                             {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
                                 "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 2",
+                                "getAdditionalRemittanceInformations": [
+                                    "Additional Remittance Information V3 block 2"
+                                ],
                                 "getCreditorReferenceInformation": {
                                     "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
                                     "getCode": "SCOR",

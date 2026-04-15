@@ -192,8 +192,13 @@ abstract class EntryTransactionDetail
                 $structuredRemittanceInformation = new DTO\StructuredRemittanceInformation();
 
                 if (isset($xmlDetailsStructuredBlock->AddtlRmtInf)) {
-                    $structuredRemittanceInformation->setAdditionalRemittanceInformation(
-                        (string) $xmlDetailsStructuredBlock->AddtlRmtInf
+                    $additionalRemittanceInformations = [];
+                    foreach ($xmlDetailsStructuredBlock->AddtlRmtInf as $xmlAdditionalRemittanceInformation) {
+                        $additionalRemittanceInformations[] = (string) $xmlAdditionalRemittanceInformation;
+                    }
+
+                    $structuredRemittanceInformation->setAdditionalRemittanceInformations(
+                        $additionalRemittanceInformations
                     );
                 }
 
