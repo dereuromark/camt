@@ -159,6 +159,21 @@ class EndToEndTest extends Framework\TestCase
             }
         }
 
+        self::assertNull($messages[0]->getRecords()[0]->getAccountServicerBic());
+        self::assertNull($messages[0]->getRecords()[0]->getAccountServicerName());
+
+        self::assertEquals('KREDBEBB', $messages[1]->getRecords()[0]->getAccountServicerBic());
+        self::assertNull($messages[1]->getRecords()[0]->getAccountServicerName());
+
+        self::assertNull($messages[2]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('AAAA BANKEN', $messages[2]->getRecords()[0]->getAccountServicerName());
+
+        self::assertNull($messages[3]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('AAAA BANKEN', $messages[3]->getRecords()[0]->getAccountServicerName());
+
+        self::assertNull($messages[4]->getRecords()[0]->getAccountServicerBic());
+        self::assertNull($messages[4]->getRecords()[0]->getAccountServicerName());
+
         $statementV4 = $messages[2]->getRecords()[0];
         self::assertInstanceOf(DTO\Pagination::class, $statementV4->getPagination());
         self::assertEquals('2', $statementV4->getPagination()->getPageNumber());

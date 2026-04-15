@@ -131,7 +131,7 @@ class Entry
 
     public function setBatchPaymentId(?string $batchPaymentId): void
     {
-        $this->batchPaymentId = trim((string) $batchPaymentId);
+        $this->batchPaymentId = self::trimWhitespace((string) $batchPaymentId);
     }
 
     public function getBatchPaymentId(): ?string
@@ -157,6 +157,11 @@ class Entry
     public function setBankTransactionCode(?BankTransactionCode $bankTransactionCode): void
     {
         $this->bankTransactionCode = $bankTransactionCode;
+    }
+
+    private static function trimWhitespace(string $value): string
+    {
+        return trim($value);
     }
 
     public function getCharges(): ?Charges

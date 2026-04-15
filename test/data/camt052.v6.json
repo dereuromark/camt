@@ -49,6 +49,8 @@
                     "getIdentification": "CH2801234000123456789",
                     "getName": null
                 },
+                "getAccountServicerBic": "UBSWCHZH80A",
+                "getAccountServicerName": "UBS SWITZERLAND AG",
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
                     {

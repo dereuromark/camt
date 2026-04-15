@@ -46,6 +46,8 @@
                     "getIssuer": null,
                     "getSchemeName": null
                 },
+                "getAccountServicerBic": "KREDBEBB",
+                "getAccountServicerName": null,
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
                     {

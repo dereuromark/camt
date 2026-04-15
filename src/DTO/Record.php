@@ -12,6 +12,10 @@ abstract class Record
 
     protected Account $account;
 
+    protected ?string $accountServicerBic = null;
+
+    protected ?string $accountServicerName = null;
+
     protected ?Pagination $pagination = null;
 
     protected ?string $electronicSequenceNumber = null;
@@ -45,6 +49,26 @@ abstract class Record
     public function getAccount(): Account
     {
         return $this->account;
+    }
+
+    public function getAccountServicerBic(): ?string
+    {
+        return $this->accountServicerBic;
+    }
+
+    public function setAccountServicerBic(?string $accountServicerBic): void
+    {
+        $this->accountServicerBic = $accountServicerBic;
+    }
+
+    public function getAccountServicerName(): ?string
+    {
+        return $this->accountServicerName;
+    }
+
+    public function setAccountServicerName(?string $accountServicerName): void
+    {
+        $this->accountServicerName = $accountServicerName;
     }
 
     public function getPagination(): ?Pagination

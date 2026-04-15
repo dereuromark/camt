@@ -41,6 +41,8 @@
                     "getId": "CH2801234000123456789",
                     "getIdentification": "CH2801234000123456789"
                 },
+                "getAccountServicerBic": null,
+                "getAccountServicerName": null,
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [],
                 "getCopyDuplicateIndicator": "CODU",

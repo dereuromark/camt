@@ -42,6 +42,8 @@
                     "getIssuer": null,
                     "getSchemeName": null
                 },
+                "getAccountServicerBic": null,
+                "getAccountServicerName": "AAAA BANKEN",
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
                     {

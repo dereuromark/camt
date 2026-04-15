@@ -42,6 +42,8 @@
                     "getIdentification": "DE91100000000123456789",
                     "getName": null
                 },
+                "getAccountServicerBic": "COBADEFF",
+                "getAccountServicerName": null,
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,
                 "getCreatedOn": null,

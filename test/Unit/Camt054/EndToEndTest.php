@@ -116,6 +116,15 @@ class EndToEndTest extends Framework\TestCase
             }
         }
 
+        self::assertNull($messages[0]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('AAAA BANKEN', $messages[0]->getRecords()[0]->getAccountServicerName());
+
+        self::assertEquals('UBSWCHZH80A', $messages[1]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('UBS SWITZERLAND AG', $messages[1]->getRecords()[0]->getAccountServicerName());
+
+        self::assertEquals('UBSWCHZH80A', $messages[2]->getRecords()[0]->getAccountServicerBic());
+        self::assertEquals('UBS SWITZERLAND AG', $messages[2]->getRecords()[0]->getAccountServicerName());
+
         $notificationV4 = $messages[1]->getRecords()[0];
         self::assertInstanceOf(DTO\Pagination::class, $notificationV4->getPagination());
         self::assertEquals('2', $notificationV4->getPagination()->getPageNumber());
