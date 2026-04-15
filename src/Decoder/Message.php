@@ -82,11 +82,11 @@ abstract class Message
         }
 
         $bic = $xmlFinancialInstitution->BIC;
-        if (!isset($bic) || mb_trim((string) $bic) === '') {
+        if (!isset($bic) || $this->trimWhitespace((string) $bic) === '') {
             $bic = $xmlFinancialInstitution->BICFI;
         }
 
-        $bic = mb_trim((string) $bic);
+        $bic = $this->trimWhitespace((string) $bic);
 
         return $bic !== '' ? $bic : null;
     }
@@ -98,9 +98,14 @@ abstract class Message
             return null;
         }
 
-        $name = mb_trim((string) $name);
+        $name = $this->trimWhitespace((string) $name);
 
         return $name !== '' ? $name : null;
+    }
+
+    private function trimWhitespace(string $value): string
+    {
+        return trim($value);
     }
 
     abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document): void;
